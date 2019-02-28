@@ -54,7 +54,7 @@ func (me *HelloFs) Open(name string, flags uint32, context *fuse.Context) (file 
 func main() {
 	flag.Parse()
 	if len(flag.Args()) < 1 {
-		log.Fatal("Usage:\n  hello MOUNTPOINT")
+		log.Fatal("Usage:\n  fuse.teedy MOUNTPOINT")
 	}
 	nfs := pathfs.NewPathNodeFs(&HelloFs{FileSystem: pathfs.NewDefaultFileSystem()}, nil)
 	server, _, err := nodefs.MountRoot(flag.Arg(0), nfs.Root(), nil)
